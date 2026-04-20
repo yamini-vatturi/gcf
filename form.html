@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head><title>Form Submission</title></head>
+<body style="font-family:sans-serif;padding:24px;background:#f8f9fa">
+
+  <h2>Login Form</h2>
+
+  <form id="loginForm"
+    style="display:flex;flex-direction:column;gap:10px;max-width:300px">
+
+    <input id="userIn" type="text" placeholder="Username"
+      style="padding:8px 12px;border:1px solid #ccc;border-radius:6px;font-size:1rem">
+
+    <input id="passIn" type="password" placeholder="Password"
+      style="padding:8px 12px;border:1px solid #ccc;border-radius:6px;font-size:1rem">
+
+    <button type="submit"
+      style="padding:9px;background:#f7df1e;border:none;border-radius:6px;
+             cursor:pointer;font-weight:700;font-size:1rem">
+      Login
+    </button>
+  </form>
+
+  <p id="loginMsg" style="margin-top:14px;font-size:0.95rem"></p>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      let user = document.getElementById("userIn").value.trim();
+      let pass = document.getElementById("passIn").value.trim();
+      let msg  = document.getElementById("loginMsg");
+
+      // Validate
+      if (user === "" || pass === "") {
+        msg.textContent = "❌ Both fields are required.";
+        msg.style.color = "red";
+        return;
+      }
+
+      // Simulate authentication check
+      if (user === "admin" && pass === "1234") {
+        msg.textContent = "✓ Login successful! Welcome, " + user + ".";
+        msg.style.color = "green";
+      } else {
+        msg.textContent = "❌ Invalid username or password.";
+        msg.style.color = "red";
+      }
+    });
+  </script>
+
+</body>
+</html>
