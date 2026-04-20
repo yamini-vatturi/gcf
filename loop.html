@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head><title>Loops Demo</title></head>
+<body style="font-family:sans-serif;padding:24px;background:#f8f9fa">
+
+  <h2>Print Numbers</h2>
+
+  <label>From:
+    <input id="from" type="number" value="1"
+      style="width:70px;padding:6px 10px;border:1px solid #ccc;
+             border-radius:6px;font-size:1rem;margin:0 8px">
+  </label>
+  <label>To:
+    <input id="to" type="number" value="10"
+      style="width:70px;padding:6px 10px;border:1px solid #ccc;
+             border-radius:6px;font-size:1rem;margin:0 8px">
+  </label>
+  <button onclick="printNums()"
+    style="padding:8px 18px;background:#f194ed;border:none;border-radius:6px;
+           cursor:pointer;font-weight:700;font-size:1rem">
+    Show
+  </button>
+
+  <div id="output"
+    style="margin-top:16px;display:flex;flex-wrap:wrap;gap:8px">
+  </div>
+
+  <script>
+    function printNums() {
+      let from = Number(document.getElementById("from").value);
+      let to   = Number(document.getElementById("to").value);
+      let out  = document.getElementById("output");
+
+      if (from > to || to - from >  200) {
+        out.innerHTML = "<b style='color:red'>Enter a valid range (max 200 numbers).</b>";
+        return;
+      }
+
+      let html = "";
+      for (let i = from; i <= to; i++) {
+        let isEven = i % 2 === 0;
+        html += `<span style="display:inline-block;width:38px;height:38px;
+          line-height:38px;text-align:center;border-radius:8px;font-weight:600;
+          background:${isEven ? '#f7df1e' : '#e2e8f0'};
+          color:${isEven ? '#111' : '#444'}">${i}</span>`;
+      }
+
+      out.innerHTML = html;
+    }
+  </script>
+
+</body>
+</html>

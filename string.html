@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head><title>String Operations</title></head>
+<body style="font-family:sans-serif;padding:24px;background:#f8f9fa">
+
+  <h2>String Operations Demo</h2>
+  <input id="nameInput" type="text" placeholder="Enter your name"
+    style="padding:8px 12px;border:1px solid #ccc;border-radius:6px;
+           font-size:1rem;width:220px">
+  <button onclick="runOps()"
+    style="margin-left:8px;padding:8px 18px;background:#ed9cf0;border:none;
+           border-radius:6px;cursor:pointer;font-weight:700;font-size:1rem">
+    Submit
+  </button>
+  <div id="output" style="margin-top:16px;line-height:2.4;font-size:0.95rem"></div>
+
+  <script>
+    function runOps() {
+      let raw  = document.getElementById("nameInput").value;
+      let name = raw.trim();
+
+      if (!name) {
+        document.getElementById("output").innerHTML =
+          "<b style='color:red'>Please enter a name.</b>";
+        return;
+      }
+
+      document.getElementById("output").innerHTML =
+        `<b>Input (trimmed):</b> ${name}<br>` +
+        `<b>.length:</b> ${name.length}<br>` +
+        `<b>.toUpperCase():</b> ${name.toUpperCase()}<br>` +
+        `<b>.toLowerCase():</b> ${name.toLowerCase()}<br>` +
+        `<b>.slice(0, 3):</b> ${name.slice(0, 3)}<br>` +
+        `<b>Template literal:</b> Hello, ${name}! Welcome to JS Mastery.`;
+    }
+  </script>
+
+</body>
+</html>

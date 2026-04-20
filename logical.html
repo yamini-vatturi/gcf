@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head><title>Operators Demo</title></head>
+<body style="font-family:sans-serif;padding:24px;background:#f8f9fa">
+
+  <h2>Check Eligibility</h2>
+
+  <label>Age:
+    <input id="ageInput" type="number" placeholder="Enter age"
+      style="padding:6px 10px;border:1px solid #ccc;border-radius:6px;
+             font-size:1rem;width:130px;margin-left:8px">
+  </label><br><br>
+
+  <label style="display:flex;align-items:center;gap:8px;cursor:pointer">
+    <input id="idCheck" type="checkbox"
+      style="width:16px;height:16px;cursor:pointer">
+    Has valid ID
+  </label><br>
+
+  <button onclick="checkEligibility()"
+    style="padding:8px 18px;background:#f7df1e;border:none;border-radius:6px;
+           cursor:pointer;font-weight:700;font-size:1rem">
+    Check
+  </button>
+  <div id="output" style="margin-top:16px;line-height:2.2;font-size:0.95rem"></div>
+
+  <script>
+    function checkEligibility() {
+      let age   = Number(document.getElementById("ageInput").value);
+      let hasID = document.getElementById("idCheck").checked;
+
+      if (!age) {
+        document.getElementById("output").innerHTML =
+          "<b style='color:red'>Please enter an age.</b>";
+        return;
+      }
+
+      let isAdult    = age >= 18;
+      let canEnter   = isAdult && hasID;
+      let partialPass = isAdult || hasID;
+
+      document.getElementById("output").innerHTML =
+        "<b>Age (>= 18):</b> " + isAdult + "<br>" +
+        "<b>Has ID:</b> " + hasID + "<br>" +
+        "<b>Can enter (age AND id):</b> <b style='color:" +
+          (canEnter ? "green" : "red") + "'>" + canEnter + "</b><br>" +
+        "<b>Partial pass (age OR id):</b> " + partialPass;
+    }
+  </script>
+
+</body>
+</html>

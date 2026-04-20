@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head><title>DOM Structure</title></head>
+<body style="font-family:sans-serif;padding:24px;background:#f8f9fa">
+
+  <h1 id="title">Hello Aman</h1>
+  <p id="intro">Learning DOM</p>
+
+  <button onclick="inspectDOM()"
+    style="margin-top:12px;padding:8px 18px;background:#f7df1e;border:none;
+           border-radius:6px;cursor:pointer;font-weight:700;font-size:1rem">
+    Inspect DOM
+  </button>
+
+  <div id="output"
+    style="margin-top:16px;font-size:0.9rem;line-height:2;
+           font-family:monospace;background:#1e1e2e;color:#cdd6f4;
+           border-radius:8px;padding:16px">
+  </div>
+
+  <script>
+    function inspectDOM() {
+      let info = "";
+
+      info += "document.title: <b>" + document.title + "</b><br>";
+      info += "document.body.nodeType: <b>" + document.body.nodeType + "</b> (Element)<br>";
+      info += "body.children.length: <b>" + document.body.children.length + "</b><br><br>";
+
+      info += "<b>Direct element children of <body>:</b><br>";
+      for (let el of document.body.children) {
+        info += "  &lt;" + el.tagName.toLowerCase() + "&gt;";
+        if (el.id) info += " #" + el.id;
+        info += " → nodeType: " + el.nodeType;
+        info += ", children: " + el.children.length + "<br>";
+      }
+
+      document.getElementById("output").innerHTML = info;
+    }
+  </script>
+
+</body>
+</html>

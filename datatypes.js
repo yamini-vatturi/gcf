@@ -1,0 +1,12 @@
+let name="yamini";
+let age=18;
+let isStudent=true;
+let emptyValue=null;
+let notAssigned;
+let uniqueId=Symbol("id");
+console.log(typeof name);
+console.log(typeof age);
+console.log(typeof isStudent);
+console.log(typeof emptyValue);
+console.log(typeof notAssigned);
+console.log(typeof uniqueId);

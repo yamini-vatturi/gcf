@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head><title>Objects Demo</title></head>
+<body style="font-family:sans-serif;padding:24px;background:#f8f9fa">
+
+  <h2>Student Info</h2>
+  <button onclick="showInfo()"
+    style="padding:8px 18px;background:#f7df1e;border:none;
+           border-radius:6px;cursor:pointer;font-weight:700;font-size:1rem">
+    Show
+  </button>
+  <div id="output" style="margin-top:16px;font-size:0.95rem"></div>
+
+  <script>
+    function showInfo() {
+      const student = {
+        name:   "Yamini Vatturi",
+        age:    18,
+        course: "Computer Science",
+        city:   "Vadodara",
+        grade:  "O"
+      };
+
+      let html =
+        "<div style='background:#fff;border:1px solid #ddd;border-radius:10px;" +
+        "padding:18px 22px;max-width:340px;line-height:2.2'>";
+
+      for (let key in student) {
+        html += `<b style="text-transform:capitalize">${key}:</b> ${student[key]}<br>`;
+      }
+
+      html += "</div>";
+      document.getElementById("output").innerHTML = html;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head><title>Advanced Functions</title></head>
+<body style="font-family:sans-serif;padding:24px;background:#f8f9fa">
+
+  <h2>Discount Calculator</h2>
+  <input id="priceInput" type="number" placeholder="Enter price (₹)"
+    style="padding:8px 12px;border:1px solid #ccc;border-radius:6px;
+           font-size:1rem;width:200px">
+  <button onclick="calculate()"
+    style="margin-left:8px;padding:8px 18px;background:#f7df1e;border:none;
+           border-radius:6px;cursor:pointer;font-weight:700;font-size:1rem">
+    Apply 10% Discount
+  </button>
+  <div id="output" style="margin-top:16px;line-height:2.4;font-size:0.95rem"></div>
+
+  <script>
+    // Each function does ONE thing
+    function applyDiscount(price) {
+      return price * 0.9; // 10% off
+    }
+
+    function calculateTax(price) {
+      return price * 1.18; // 18% GST
+    }
+
+    function formatPrice(amount) {
+      return "₹" + amount.toFixed(2);
+    }
+
+    function calculate() {
+      let raw = Number(document.getElementById("priceInput").value);
+
+      if (!raw || raw <= 0) {
+        document.getElementById("output").innerHTML =
+          "<b style='color:red'>Please enter a valid price.</b>";
+        return;
+      }
+
+      // Compose: discount first, then tax on discounted price
+      let discounted = applyDiscount(raw);
+      let withTax    = calculateTax(discounted);
+
+      document.getElementById("output").innerHTML =
+        "<b>Original price:</b> " + formatPrice(raw) + "<br>" +
+        "<b>After 10% discount:</b> " + formatPrice(discounted) + "<br>" +
+        "<b>After 18% GST:</b> " + formatPrice(withTax);
+    }
+  </script>
+
+</body>
+</html>

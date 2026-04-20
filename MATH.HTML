@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head><title>Dice Roller</title></head>
+<body style="font-family:sans-serif;padding:24px;background:#f8f9fa;text-align:center">
+
+  <h2>Dice Roller</h2>
+  <div id="dice"
+    style="font-size:5rem;margin:16px 0;min-height:80px;line-height:1">
+    🎲
+  </div>
+  <p id="label" style="color:#555;font-size:1rem;margin-bottom:16px">
+    Press Roll to start
+  </p>
+  <button onclick="rollDice()"
+    style="padding:10px 28px;background:#f7df1e;border:none;border-radius:6px;
+           cursor:pointer;font-weight:700;font-size:1rem">
+    Roll
+  </button>
+  <div id="history"
+    style="margin-top:20px;font-size:0.9rem;color:#555;line-height:1.8">
+  </div>
+
+  <script>
+    const faces = ["⚀","⚁","⚂","⚃","⚄","⚅"];
+    let rolls = [];
+
+    function rollDice() {
+      let result = Math.floor(Math.random() * 6) + 1; // 1–6
+      rolls.push(result);
+
+      document.getElementById("dice").textContent  = faces[result - 1];
+      document.getElementById("label").textContent =
+        `Rolled: ${result}  |  Max so far: ${Math.max(...rolls)}  |  Min: ${Math.min(...rolls)}`;
+      document.getElementById("history").textContent =
+        "History: " + rolls.join(", ");
+    }
+  </script>
+
+</body>
+</html>

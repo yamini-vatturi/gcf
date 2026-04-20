@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Exception handling</title></head>
+    <body style="font-family:sans-serif;padding:20px;background:#f8f9fa">
+    <h2>Enter a number</h2>
+    <input type="text" id="num" placeholder="e.g. 42">
+    <button onclick="checkNumber()">Check</button>
+    <p id="result" style="margin-top:10px;font-weight:600"></p>
+    <script>
+        function checkNumber(){
+            let value=document.getElementsById("num").value;
+            let out=document.getElementsById("result");
+            try{
+                if(value = "")throw new Error("Input cannot be empty");
+                let number= Number(value);
+                if(isNaN(number))throw new Error("Not a valid number");
+                out.style.color="green";
+                out.innerText="Valid number: "+ number;
+            } catch(error){
+                out.style.color="red";
+                out.innerText="Error: "+error.message;
+            } finally{
+                console.log("Validation attempted");
+            }
+        }
+    </script>
+    </body>
+</html>

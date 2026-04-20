@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head><title>Decision Demo</title></head>
+<body style="font-family:sans-serif;padding:24px;background:#f8f9fa">
+
+  <h2>Check Result</h2>
+  <input id="scoreInput" type="number" placeholder="Enter score (0–100)"
+    style="padding:8px 12px;border:1px solid #ccc;border-radius:6px;
+           font-size:1rem;width:210px">
+  <button onclick="checkGrade()"
+    style="margin-left:8px;padding:8px 18px;background:#f7df1e;border:none;
+           border-radius:6px;cursor:pointer;font-weight:700;font-size:1rem">
+    Check Grade
+  </button>
+  <div id="output" style="margin-top:16px;font-size:1.05rem;line-height:2"></div>
+
+  <script>
+    function checkGrade() {
+      let score = Number(document.getElementById("scoreInput").value);
+      let out   = document.getElementById("output");
+
+      if (isNaN(score) || score < 0 || score > 100) {
+        out.innerHTML = "<b style='color:red'>Enter a valid score between 0 and 100.</b>";
+        return;
+      }
+
+      let grade, color;
+
+      if (score >= 90)      { grade = "A — Excellent";  color = "#22c55e"; }
+      else if (score >= 75) { grade = "B — Good";        color = "#3b82f6"; }
+      else if (score >= 60) { grade = "C — Average";     color = "#f59e0b"; }
+      else if (score >= 40) { grade = "D — Below Average"; color = "#f97316"; }
+      else                  { grade = "F — Fail";         color = "#ef4444"; }
+
+      out.innerHTML =
+        "<b>Score:</b> " + score + "<br>" +
+        "<b>Grade:</b> <b style='color:" + color + ";font-size:1.15rem'>" + grade + "</b>";
+    }
+  </script>
+
+</body>
+</html>

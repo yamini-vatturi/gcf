@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head><title>Type Checking</title></head>
+<body style="font-family:sans-serif;padding:24px;background:#f8f9fa">
+
+  <h2>Type Checker</h2>
+  <input id="val" type="text" placeholder="Enter a value"
+    style="padding:8px 12px;border:1px solid #ccc;border-radius:6px;
+           font-size:1rem;width:200px">
+  <button onclick="checkType()"
+    style="margin-left:8px;padding:8px 18px;background:#f7df1e;border:none;
+           border-radius:6px;cursor:pointer;font-weight:700;font-size:1rem">
+    Check
+  </button>
+  <div id="output" style="margin-top:16px;line-height:2.2;font-size:0.95rem"></div>
+
+  <script>
+    function checkType() {
+      let raw = document.getElementById("val").value;
+
+      // Try to convert to a number to test both string and number checks
+      let asNum = Number(raw);
+
+      document.getElementById("output").innerHTML =
+        "<b>Raw input:</b> " + raw + "<br>" +
+        "<b>typeof:</b> " + typeof raw + "<br>" +
+        "<b>Array.isArray():</b> " + Array.isArray(raw) + "<br>" +
+        "<b>isNaN(Number(input)):</b> " + isNaN(asNum) + "<br>" +
+        "<b>Looks like a number?</b> " +
+          (!isNaN(asNum) && raw !== "" ? "✅ Yes" : "❌ No");
+    }
+  </script>
+
+</body>
+</html>

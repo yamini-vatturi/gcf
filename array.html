@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head><title>Arrays Demo</title></head>
+<body style="font-family:sans-serif;padding:24px;background:#f8f9fa">
+
+  <h2>Fruits List</h2>
+  <button onclick="showFruits()"
+    style="padding:8px 18px;background:#f7df1e;border:none;
+           border-radius:6px;cursor:pointer;font-weight:700;font-size:1rem">
+    Show Fruits
+  </button>
+  <div id="output" style="margin-top:16px;line-height:2;font-size:0.95rem"></div>
+
+  <script>
+    function showFruits() {
+      let fruits = ["Apple", "Banana", "Mango", "Grapes"];
+
+      let listHtml = "<b>Fruits array:</b> [" + fruits.join(", ") + "]<br><br>";
+      listHtml += "<b>Each fruit:</b><ul style='margin:6px 0 0 20px'>";
+
+      for (let i = 0; i < fruits.length; i++) {
+        listHtml += `<li>[${i}] ${fruits[i]}</li>`;
+      }
+
+      listHtml += "</ul>";
+      listHtml += `<br><b>Total items:</b> ${fruits.length}`;
+
+      document.getElementById("output").innerHTML = listHtml;
+    }
+  </script>
+
+</body>
+</html>
